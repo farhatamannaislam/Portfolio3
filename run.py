@@ -46,8 +46,81 @@ def welcome_screen():
     "Service Detail", justify="center", width=80))
 
 
+def validate_service_description():
+    """
+    Validates service description
+    """
+    print("Please enter a service description.\n")
+
+    # Loop repeats until valid input is received
+    while True:
+        # Try... except for exception / error handling
+        try:
+            # global so variable can be accessed in other functions
+            global service_input
+            service_input = input("> ")
+
+            # Input cannot be empty
+            # Input cannot be longer than 25 characters
+            if service_input != "" and len(service_input) < 50:
+                break
+
+            # Invalid input raises error
+            else:
+                raise ValueError("")
+
+        except ValueError as e:
+            print()
+            print("Invalid input: "
+                        "Please enter a description between "
+                        "0 and 50 characters.\n", Fore.RED)
+
+def validate_service_price():
+    """
+    Validates service price.
+    While loop will repeatedly request data until it is valid.
+    """
+    print("Please enter a price:\n")
+
+    # Loop repeats until valid input is received
+    while True:
+        # Try... except for exception / error handling
+        try:
+            # global so variable can be accessed in other functions
+            global price_input
+            price_input = float(input("> "))
+
+            # Input cannot be empty
+            # Input must be between 0 and 10000
+            if price_input != "" and 0 <= price_input <= 500:
+                break
+
+            # Invalid input raises error
+            else:
+                raise ValueError("")
+
+        except ValueError as e:
+            print()
+            print("Invalid input: Please enter a number "
+                        "between 0 and 500.\n", Fore.RED)
 
 
+def add_service():
+    """
+    Collects expense details from users.
+    Runs separate function to collect each aspect of details in order.
+    After all data is collected and validated, a summary is shown to users.
+    """
+    print()
+    print(Fore.BLUE + "---- Add Service ----\n")
+    print("Please add expense details below.\n")
+
+
+    validate_service_description()
+    print()
+    validate_service_price()
+    print()
+    #confirm_input()
 
 # Main Menu Functions
 
@@ -73,18 +146,18 @@ def main_menu():
         try:
             user_input = input("> ")
 
-            # Add Expenses
+            # Add Service
             if user_input == "1":
                 print()
 
-                add_expenses()
+                add_service()
                 break
 
-            # View Expenses
+            # View Service
             elif user_input == "2":
                 print()
 
-                view_expenses()
+                view_service()
                 break
 
             # Exit program
