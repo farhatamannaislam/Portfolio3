@@ -1,153 +1,96 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+# Libraries
+import datetime
+import os
+import sys
+import time
+
 
 import gspread
 from google.oauth2.service_account import Credentials
-
-from rich import print
-from rich.style import Style
-from rich.console import Console
-from rich.table import Table
+import colorama
+from colorama import Back, Fore, Style
+colorama.init(autoreset=True)
 import pyfiglet
-from termcolor import colored
-from colorama import Fore, Style, init
 
 
-# Rich console initialize
-console = Console()
+from collections import defaultdict
+from tabulate import tabulate
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
-CREDS = Credentials.from_service_account_file('creds.json')
+# Variables to access spreadsheet
+# Guidance provided by Code Institute's course material
+CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Portfolio3')
 
 serviceDetails = SHEET.worksheet('ServiceDetail')
-
-#data = serviceDetails.get_all_values()
-
-#print(data)
-       
-# Add Expenses Menu Functions
-
-def validate_price():
-    """
-    Validates user's price input.
-    While loop will repeatedly request data until it is valid.
-    """
-    print("Please enter a Price:\n")
-
-    # Loop repeats until valid input is received
-    while True:
-        # Try... except for exception / error handling
-        try:
-            # global so variable can be accessed in other functions
-            global price_input
-            price_input = float(input("> "))
-
-            # Input cannot be empty
-            # Input must be between 0 and 10000
-            if price_input != "" and 0 <= price_input <= 500:
-                break
-
-            # Invalid input raises error
-            else:
-                raise ValueError("")
-
-        except ValueError as e:
-            print("Invalid input: Please enter a price "
-                        "between 0 and 500.\n")
+data = serviceDetails.get_all_values()
 
 
 
-def validate_service_description():
-    """
-    Validates user's service description input.
-    While loop will repeatedly request data until it is valid.
-    """
-    print("Please enter a service description.\n")
-
-    # Loop repeats until valid input is received
-    while True:
-        # Try... except for exception / error handling
-        try:
-            # global so variable can be accessed in other functions
-            global service_input
-            service_input = input("> ")
-
-            # Input cannot be empty
-            # Input cannot be longer than 25 characters
-            if service_input != "" and len(service_input) < 50:
-                break
-
-            # Invalid input raises error
-            else:
-                raise ValueError("")
-
-        except ValueError as e:
-            print()
-            typingPrint("Invalid input: "
-                        "Please enter a service description between "
-                        "0 and 50 characters.\n")
-
-def show_all_service():
-    """
-    Displays all services.
-    """
-    console.clear()
-    data = serviceDetails.get_all_values()
-
-    print("------ The Service Details and Corresponding Prices are here ------\n ")
-    
-    print(data)
-
-def main_menu():
+def welcome_screen():
     """
     Displays title, the main menu, handles user input for various
     customer-related actions, and directs the user to the
     appropriate method based on their choice.
     """
-    console.clear()
+    
     print(pyfiglet.figlet_format(
     "Service Detail", justify="center", width=80))
 
-    while True:  # Loop until a valid choice is made
-        print("Please select an option:\n")
-        table = Table(title="Menu", width=console.width)
 
-        table.add_column("Option", justify="center", style="blue")
-        table.add_column("Description", justify="left", style="blue")
 
-        table.add_row("1", "Show all services")
-        table.add_row("2", "Add service")
-        table.add_row("3", "Exit")
 
-        print(table)
-        choice = input("> ").strip()
+
+# Main Menu Functions
+
+
+def main_menu():
+    """
+    Runs the main menu of the program.
+    Allows users to navigate to one of two sub-menus.
+    """
+    # Loop repeats until valid input is received
+    while True:
+        print()
+        print(Fore.BLUE+ "                       "
+              "---- MAIN MENU ----\n")
+        print("Please select one of the following options:\n")
+        print()
+        print("    1. Add Service")
+        print("    2. Show Service")
+        print("    3. Exit")
+        print()
 
         # Try... except for exception / error handling
         try:
             user_input = input("> ")
 
-            # Show all services
+            # Add Expenses
             if user_input == "1":
                 print()
-                show_all_service()
+
+                add_expenses()
                 break
 
-            # Add Service
+            # View Expenses
             elif user_input == "2":
-                add_service()
+                print()
+
+                view_expenses()
                 break
 
             # Exit program
             elif user_input == "3":
+                print()
+
                 break
 
             # Invalid input raises error
@@ -158,24 +101,12 @@ def main_menu():
             print()
             print(
                 "Invalid input: Please select one "
-                "of the options (1-3).\n")
+                "of the options (1-3).\n", Fore.RED)
             user_input = input("> ")
 
 
 
 
-
-
-
-def main():
-    """
-    Creates an instance of the Service Detail application and starts it by calling
-    the 'run' method.
-    """
-    #show_all_service()
-    main_menu()
-    #validate_price()
-    #validate_service_description()
-
-
-main()
+# Run the main function
+welcome_screen()
+main_menu()
