@@ -35,7 +35,7 @@ data = serviceDetails.get_all_values()
 
 
 
-def welcome_screen():
+def home_screen():
     """
     Displays title, the main menu, handles user input for various
     customer-related actions, and directs the user to the
@@ -71,9 +71,9 @@ def validate_service_description():
 
         except ValueError as e:
             print()
-            print("Invalid input: "
+            print(Fore.RED+"Invalid input: "
                         "Please enter a description between "
-                        "0 and 50 characters.\n", Fore.RED)
+                        "0 and 50 characters.\n")
 
 def validate_service_price():
     """
@@ -101,8 +101,8 @@ def validate_service_price():
 
         except ValueError as e:
             print()
-            print("Invalid input: Please enter a number "
-                        "between 0 and 500.\n", Fore.RED)
+            print(Fore.RED+ "Invalid input: Please enter a number "
+                        "between 0 and 500.\n")
 
 
 def view_service():
@@ -134,7 +134,69 @@ def add_service():
     print()
     validate_service_price()
     print()
-    #confirm_input()
+    confirm_input()
+
+
+def confirm_input():
+    """
+    Allows users to confirm or update service details.
+    While loop will repeatedly request data until it is valid.
+    """
+
+    print("Conrifm service details (c) or re-enter (r)?\n")
+    print("To return to Main Menu please enter (m).\n")
+
+    # Loop repeats until valid input is received
+    while True:
+        # Try... except for exception / error handling
+        try:
+            user_input = input("> ")
+
+            # Re-enter details
+            if user_input.lower() == "r":
+                print(Fore.YELLOW+"Clearing service data..."
+                            "\n")
+               
+                add_service()
+
+            # Confirm details
+            elif user_input.lower() == "c":
+                entered_service = [
+                    service_input,
+                    price_input
+                ]
+                update_worksheet(entered_service)
+                break
+
+                # Return to Main Menu
+            elif user_input.lower() == "m":
+                return_to_main()
+
+            # Invalid input raises error
+            else:
+                raise ValueError("")
+
+        except ValueError as e:
+            print(Fore.RED+
+                "Invalid input: Please enter (c) to confirm "
+                "or (r) to re-enter details "
+                "or (m) to return to Main Menu.\n")
+
+
+def update_worksheet(service):
+    """
+    Updates the worksheet.
+    Appends a new row with the provided expense details.
+    """
+    print("Updating ServiceDetail worksheet...\n")
+   
+    # Adds new service to google sheet as a new row
+    service_worksheet = SHEET.worksheet("ServiceDetail")
+    service_worksheet.append_row(service)
+    print("Service Detail worksheet updated successfully.\n")
+    
+ 
+
 
 # Main Menu Functions
 
@@ -185,15 +247,20 @@ def main_menu():
                 raise ValueError("")
 
         except ValueError as e:
-            print()
-            print(
+            print(Fore.RED+
                 "Invalid input: Please select one "
-                "of the options (1-3).\n", Fore.RED)
+                "of the options (1-3).\n")
             user_input = input("> ")
 
 
-
+def return_to_main():
+    """
+    Clears the screen and returns to the main menu
+    """
+    print(Fore.YELLOW+ "Loading Main Menu...\n")
+    
+    main_menu()
 
 # Run the main function
-welcome_screen()
+home_screen()
 main_menu()
