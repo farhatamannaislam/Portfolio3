@@ -1,8 +1,6 @@
 # Libraries
-import datetime
 import os
 import sys
-import time
 
 
 import gspread
@@ -62,7 +60,8 @@ def validate_service_description():
 
             # Input cannot be empty
             # Input cannot be longer than 25 characters
-            if service_input != "" and len(service_input) < 50:
+            # Input should not be digit
+            if service_input != "" and len(service_input) < 50 and service_input.isdigit()==False:
                 break
 
             # Invalid input raises error
@@ -73,7 +72,7 @@ def validate_service_description():
             print()
             print(Fore.RED+"Invalid input: "
                         "Please enter a description between "
-                        "0 and 50 characters.\n")
+                        "0 and 50 characters which is not digit.\n")
 
 def validate_service_price():
     """
@@ -110,7 +109,7 @@ def view_service():
     Runs the service view menu.
     """
     service = SHEET.worksheet('ServiceDetail')
-    print(Fore.BLUE+ "                                                       "
+    print("                                                       "
               "---- Service Details ----\n")
     data = service.get_all_values()
 
@@ -126,7 +125,7 @@ def add_service():
     After all data is collected and validated, a summary is shown to users.
     """
     print()
-    print(Fore.BLUE +"---- Add Service ----\n")
+    print("---- Add Service ----\n")
     print("Please add service details below.\n")
 
 
@@ -134,54 +133,12 @@ def add_service():
     print()
     validate_service_price()
     print()
-    confirm_input()
-
-
-def confirm_input():
-    """
-    Allows users to confirm or update service details.
-    While loop will repeatedly request data until it is valid.
-    """
-
-    print("Conrifm service details (c) or re-enter (r)?\n")
-    print("To return to Main Menu please enter (m).\n")
-
-    # Loop repeats until valid input is received
-    while True:
-        # Try... except for exception / error handling
-        try:
-            user_input = input("> ")
-
-            # Re-enter details
-            if user_input.lower() == "r":
-                print(Fore.YELLOW+"Clearing service data..."
-                            "\n")
-               
-                add_service()
-
-            # Confirm details
-            elif user_input.lower() == "c":
-                entered_service = [
-                    service_input,
-                    price_input
-                ]
-                update_worksheet(entered_service)
-                break
-
-                # Return to Main Menu
-            elif user_input.lower() == "m":
-                return_to_main()
-
-            # Invalid input raises error
-            else:
-                raise ValueError("")
-
-        except ValueError as e:
-            print(Fore.RED+
-                "Invalid input: Please enter (c) to confirm "
-                "or (r) to re-enter details "
-                "or (m) to return to Main Menu.\n")
-
+    entered_service = [
+        service_input,
+        price_input
+        ]
+    update_worksheet(entered_service)
+  
 
 def update_worksheet(service):
     """
@@ -194,8 +151,6 @@ def update_worksheet(service):
     service_worksheet = SHEET.worksheet("ServiceDetail")
     service_worksheet.append_row(service)
     print("Service Detail worksheet updated successfully.\n")
-    
- 
 
 
 # Main Menu Functions
