@@ -105,15 +105,29 @@ def validate_service_price():
                         "between 0 and 500.\n", Fore.RED)
 
 
+def view_service():
+    """
+    Runs the service view menu.
+    """
+    service = SHEET.worksheet('ServiceDetail')
+    print(Fore.BLUE+ "                                                       "
+              "---- Service Details ----\n")
+    data = service.get_all_values()
+
+    #print(data)
+    print(tabulate(data, headers='firstrow', tablefmt='fancy_grid'))
+
+ 
+
 def add_service():
     """
-    Collects expense details from users.
+    Collects service details from users.
     Runs separate function to collect each aspect of details in order.
     After all data is collected and validated, a summary is shown to users.
     """
     print()
-    print(Fore.BLUE + "---- Add Service ----\n")
-    print("Please add expense details below.\n")
+    print(Fore.BLUE +"---- Add Service ----\n")
+    print("Please add service details below.\n")
 
 
     validate_service_description()
