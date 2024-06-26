@@ -70,7 +70,8 @@ def validate_service_description():
 
         except ValueError as e:
             print()
-            print(Fore.RED+"Invalid input: "
+            print(Fore.RED+"                                "
+            "Invalid input: "
                         "Please enter a description between "
                         "0 and 50 characters which is not digit.\n")
 
@@ -100,8 +101,7 @@ def validate_service_price():
 
         except ValueError as e:
             print()
-            print(Fore.RED+ "Invalid input: Please enter a number "
-                        "between 0 and 500.\n")
+            print(f"{Fore.RED} Invalid input: Please enter a number between 0 and 500.\n")
 
 
 def view_service():
