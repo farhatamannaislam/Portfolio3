@@ -41,14 +41,14 @@ def home_screen():
     """
     
     print(pyfiglet.figlet_format(
-    "Service Detail", justify="center", width=80))
+    "Repair Service Detail", justify="center", width=80))
 
 
 def validate_service_description():
     """
     Validates service description
     """
-    print("Please enter a service description.\n")
+    print("Please enter a repair service description.\n")
 
     # Loop repeats until valid input is received
     while True:
