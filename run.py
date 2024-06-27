@@ -48,7 +48,7 @@ def validate_service_description():
     """
     Validates service description
     """
-    print("Please enter a repair service description.\n")
+    print(Fore.CYAN+"Please enter a repair service description.\n")
 
     # Loop repeats until valid input is received
     while True:
@@ -80,7 +80,7 @@ def validate_service_price():
     Validates service price.
     While loop will repeatedly request data until it is valid.
     """
-    print("Please enter a price:\n")
+    print(Fore.CYAN+ "Please enter a price:\n")
 
     # Loop repeats until valid input is received
     while True:
@@ -101,7 +101,7 @@ def validate_service_price():
 
         except ValueError as e:
             print()
-            print(f"{Fore.RED} Invalid input: Please enter a number between 0 and 500.\n")
+            print(f"{Fore.RED}                                    Invalid input: Please enter a number between 0 and 500.\n")
 
 
 def view_service():
@@ -109,7 +109,7 @@ def view_service():
     Runs the service view menu.
     """
     service = SHEET.worksheet('ServiceDetail')
-    print("                                                       "
+    print(Fore.CYAN+ "                                                       "
               "---- Service Details ----\n")
     data = service.get_all_values()
 
@@ -207,14 +207,6 @@ def main_menu():
                 "of the options (1-3).\n")
             user_input = input("> ")
 
-
-def return_to_main():
-    """
-    Clears the screen and returns to the main menu
-    """
-    print(Fore.YELLOW+ "Loading Main Menu...\n")
-    
-    main_menu()
 
 # Run the main function
 home_screen()
