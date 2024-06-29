@@ -1,32 +1,31 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Repair Service Detail
 
-Welcome,
+<img alt="Home Image" src="docs/readme_images/home_image.png">
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
 
-## Reminders
+ Repair Service Detail is a Python command line interface  application used to enter Service Detail of a Repair Service Business. The user can enter service description and related price and view the total service and price list available.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+The program automatically syncs all inputs to Google Sheets to ensure storage of and access to the service detail.
 
-## Creating the Heroku app
+The live link can be found here [Repair Service Detail](https://servicedetail-e151ee9cb139.herokuapp.com/)
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+A view-only version of the Google Sheet can be viewed here.[Google Sheet](https://docs.google.com/spreadsheets/d/1HaDsMmEWqLoRjx94ya5nbn5xtAUYw9c7q6rqk3dACPQ/edit?gid=0#gid=0)
 
-1. `heroku/python`
-2. `heroku/nodejs`
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+# Table of Contents
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+## Project Goal
 
-Connect your GitHub repository and deploy as normal.
+* A Simple Program that makes easy input opportunity.
+* All the inputs are properly validated.
+* The user can view the service details in tabular format.
+* An easy way to keep track of all the services.
 
-## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+# Logic Flow
 
----
+In order to visualise the flow of steps required in the app, a Flow Diagram has been created using Lucid Charts. It gives a clear overview about the logic
+of the application. 
 
-Happy coding!
+<img alt="Flow " src="docs/readme_images/flowdiagram.png">
+
