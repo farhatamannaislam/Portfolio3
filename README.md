@@ -42,7 +42,7 @@ of the application.
 
 ## Add Service
 
-If the user selects Add Service by pressing '1' in keyboard he/she will be asked to enter a service detail.
+If the user selects Add Service by pressing '1' in keyboard and hitting enter he/she will be asked to enter a service detail.
 The service should be a description between 0 to 50 Character and not a digit. Service Can not be left empty.
 
 <img alt="Service Description Validation " src="docs/readme_images/servicedescription_validation.png">
@@ -62,6 +62,9 @@ shown in the terminal. And the user will be redirected to main menue again where
 <img alt="Service Details Updated" src="docs/readme_images/ServiceDetails_updated.png">
 
 
+## Show Service
 
+If the user selects Show Service from main menu by pressing '2' in keyboard and hitting enter the all the service description and price
+from google sheet would be shown as tabular format in the command window.
 
 

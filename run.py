@@ -107,8 +107,7 @@ def view_service():
     Runs the service view menu.
     """
     service = SHEET.worksheet('ServiceDetail')
-    print(Fore.CYAN+ "                                                       "
-              "---- Service Details ----\n")
+    print(Fore.CYAN+ "---- Service Details ----\n")
     data = service.get_all_values()
 
     #print(data)
