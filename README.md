@@ -82,4 +82,20 @@ If the user wants to exit from application he/she can select '3' and press enter
 * [https://github.com/] used for version control.
 * [HEROKU](https://dashboard.heroku.com/apps) used to deploy the live project.
 * [Lucidchart](https://lucid.app/users/login#/login) - used to create the game flowchar
+* [PEP8 Python Validator](https://pep8ci.herokuapp.com/) - used to validate all the Python code
+
+## Python Libraries:
+
+* [os](https://docs.python.org/3/library/os.html) was used to clear the screen when switching between menus or views.
+* [pyfiglet](https://pypi.org/project/pyfiglet/0.7/) - for taking ASCII text and rendering it into ASCII art fonts.
+* [colorama](https://pypi.org/project/colorama/) - for adding colour to terminal text.
+* [gspread](https://pypi.org/project/gspread/) to allow communication with Google Sheets.
+* [google.oauth2.service_account](https://google-auth.readthedocs.io/en/stable/index.html) used to validate credentials and grant access to google service accounts.
+* [Sys](https://docs.python.org/3/library/sys.html) was used to create the typing effect on certain text outputs.#
+* [Tabulate](https://pypi.org/project/tabulate/) was used to display the expense data in tables.
+* [Defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict) was used to return a new dictionary like object.
+
+
+
+
 
