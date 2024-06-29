@@ -1,19 +1,15 @@
 # Libraries
 import os
 import sys
-
+import pyfiglet
+from collections import defaultdict
+from tabulate import tabulate
 
 import gspread
 from google.oauth2.service_account import Credentials
 import colorama
 from colorama import Back, Fore, Style
 colorama.init(autoreset=True)
-import pyfiglet
-
-
-from collections import defaultdict
-from tabulate import tabulate
-
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -32,16 +28,15 @@ serviceDetails = SHEET.worksheet('ServiceDetail')
 data = serviceDetails.get_all_values()
 
 
-
 def home_screen():
     """
     Displays title, the main menu, handles user input for various
     customer-related actions, and directs the user to the
     appropriate method based on their choice.
     """
-    
+
     print(pyfiglet.figlet_format(
-    "Repair Service Detail", justify="center", width=80))
+        "Repair Service Detail", justify="center", width=80))
 
 
 def validate_service_description():
@@ -61,7 +56,8 @@ def validate_service_description():
             # Input cannot be empty
             # Input cannot be longer than 25 characters
             # Input should not be digit
-            if service_input != "" and len(service_input) < 50 and service_input.isdigit()==False:
+            if (service_input != "" and len(service_input) < 50 and
+                    service_input.isdigit() is False):
                 break
 
             # Invalid input raises error
@@ -70,15 +66,16 @@ def validate_service_description():
 
         except ValueError as e:
             print()
-            print(Fore.RED+"Invalid input Please enter a description between "
-                        "0 and 50 characters which is not digit.\n")
+            print(Fore.RED + "Invalid input Please enter a description"
+                  "between 0 and 50 characters which is not digit.\n")
+
 
 def validate_service_price():
     """
     Validates service price.
     While loop will repeatedly request data until it is valid.
     """
-    print(Fore.CYAN+ "Please enter a price:\n")
+    print(Fore.CYAN + "Please enter a price:\n")
 
     # Loop repeats until valid input is received
     while True:
@@ -99,7 +96,8 @@ def validate_service_price():
 
         except ValueError as e:
             print()
-            print(f"{Fore.RED}  Invalid input: Please enter a number between 0 and 500.\n")
+            print(f"{Fore.RED}  Invalid input:"
+                  "Please enter a number between 0 and 500.\n")
 
 
 def view_service():
@@ -107,13 +105,10 @@ def view_service():
     Runs the service view menu.
     """
     service = SHEET.worksheet('ServiceDetail')
-    print(Fore.CYAN+ "---- Service Details ----\n")
+    print(Fore.CYAN + "---- Service Details ----\n")
     data = service.get_all_values()
-
-    #print(data)
     print(tabulate(data, headers='firstrow', tablefmt='fancy_grid'))
 
- 
 
 def add_service():
     """
@@ -124,8 +119,6 @@ def add_service():
     print()
     print("---- Add Service ----\n")
     print("Please add service details below.\n")
-
-
     validate_service_description()
     print()
     validate_service_price()
@@ -135,7 +128,7 @@ def add_service():
         price_input
         ]
     update_worksheet(entered_service)
-  
+
 
 def update_worksheet(service):
     """
@@ -143,7 +136,7 @@ def update_worksheet(service):
     Appends a new row with the provided expense details.
     """
     print("Updating ServiceDetail worksheet...\n")
-   
+
     # Adds new service to google sheet as a new row
     service_worksheet = SHEET.worksheet("ServiceDetail")
     service_worksheet.append_row(service)
@@ -161,7 +154,7 @@ def main_menu():
     # Loop repeats until valid input is received
     while True:
         print()
-        print(Fore.BLUE+ "                       "
+        print(Fore.BLUE + "                       "
               "---- MAIN MENU ----\n")
         print("Please select one of the following options:\n")
         print()
@@ -197,9 +190,8 @@ def main_menu():
                 raise ValueError("")
 
         except ValueError as e:
-            print(Fore.RED+
-                "Invalid input: Please select one "
-                "of the options (1-3).\n")
+            print(Fore.RED +
+                  "Invalid input: Please select one of the options (1-3).\n")
 
 
 # Run the main function

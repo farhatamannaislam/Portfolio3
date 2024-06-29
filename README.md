@@ -67,4 +67,19 @@ shown in the terminal. And the user will be redirected to main menue again where
 If the user selects Show Service from main menu by pressing '2' in keyboard and hitting enter the all the service description and price
 from google sheet would be shown as tabular format in the command window.
 
+<img alt="Show Service" src="docs/readme_images/Showservice.png">
+
+Which is followed by the main menu.
+
+## Exit
+
+If the user wants to exit from application he/she can select '3' and press enter.
+
+# Technologies Used
+
+* [Python3](https://en.wikipedia.org/wiki/Python_(programming_language))
+* Code Institute's [Python Esssebtials Template](https://github.com/Code-Institute-Org/python-essentials-template)
+* [https://github.com/] used for version control.
+* [HEROKU](https://dashboard.heroku.com/apps) used to deploy the live project.
+* [Lucidchart](https://lucid.app/users/login#/login) - used to create the game flowchar
 
