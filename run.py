@@ -2,7 +2,7 @@
 import os
 import sys
 import pyfiglet
-from collections import defaultdict
+
 from tabulate import tabulate
 
 import gspread

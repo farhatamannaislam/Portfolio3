@@ -79,7 +79,7 @@ If the user wants to exit from application he/she can select '3' and press enter
 
 * [Python3](https://en.wikipedia.org/wiki/Python_(programming_language))
 * Code Institute's [Python Esssebtials Template](https://github.com/Code-Institute-Org/python-essentials-template)
-* [https://github.com/] used for version control.
+* [GitHub](https://github.com/) used for version control.
 * [HEROKU](https://dashboard.heroku.com/apps) used to deploy the live project.
 * [Lucidchart](https://lucid.app/users/login#/login) - used to create the game flowchar
 * [PEP8 Python Validator](https://pep8ci.herokuapp.com/) - used to validate all the Python code
@@ -91,11 +91,11 @@ If the user wants to exit from application he/she can select '3' and press enter
 * [colorama](https://pypi.org/project/colorama/) - for adding colour to terminal text.
 * [gspread](https://pypi.org/project/gspread/) to allow communication with Google Sheets.
 * [google.oauth2.service_account](https://google-auth.readthedocs.io/en/stable/index.html) used to validate credentials and grant access to google service accounts.
-* [Sys](https://docs.python.org/3/library/sys.html) was used to create the typing effect on certain text outputs.#
+* [Sys](https://docs.python.org/3/library/sys.html) was used to create the typing effect on certain text outputs.
 * [Tabulate](https://pypi.org/project/tabulate/) was used to display the expense data in tables.
-* [Defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict) was used to return a new dictionary like object.
 
+# Bugs
 
-
+There is no known bug in the application.
 
 
