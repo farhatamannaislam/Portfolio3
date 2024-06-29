@@ -29,3 +29,25 @@ of the application.
 
 <img alt="Flow " src="docs/readme_images/flowdiagram.png">
 
+# Features
+
+## Title and Introduction
+
+* At the home page the title of the application is shown.
+* In the bottom of the title there are three options given for the user.
+   * 1. Add Service
+   * 2. Show Service
+   * 3. Exit
+* User can choose any option according to their wish.
+
+## Add Service
+
+If the user selects Add Service by pressing '1' in keyboard he/she will be asked to enter a service detail.
+The service should be a description between 0 to 50 Character and not a digit. Service Can not be left empty.
+
+<img alt="Service Description Validation " src="docs/readme_images/servicedescription_validation.png">
+
+When the user enters a proper service description command line will take the input and request the user to enter a price.
+
+<img alt="Correct Service Description" src="docs/readme_images/correctservice_description.png">
+
