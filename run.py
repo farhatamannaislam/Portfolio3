@@ -180,14 +180,12 @@ def main_menu():
                 print()
 
                 add_service()
-                break
 
             # View Service
             elif user_input == "2":
                 print()
 
                 view_service()
-                break
 
             # Exit program
             elif user_input == "3":
@@ -203,7 +201,6 @@ def main_menu():
             print(Fore.RED+
                 "Invalid input: Please select one "
                 "of the options (1-3).\n")
-            user_input = input("> ")
 
 
 # Run the main function
