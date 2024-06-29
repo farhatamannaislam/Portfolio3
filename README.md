@@ -49,5 +49,5 @@ The service should be a description between 0 to 50 Character and not a digit. S
 
 When the user enters a proper service description command line will take the input and request the user to enter a price.
 
-<img alt="Correct Service Description" src="docs/readme_images/correctservice_description.png">
+<img alt="Correct Service Description" src="docs/readme_images/correct_servicedescription.png">
 
