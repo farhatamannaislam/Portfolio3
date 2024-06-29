@@ -51,3 +51,17 @@ When the user enters a proper service description command line will take the inp
 
 <img alt="Correct Service Description" src="docs/readme_images/correct_servicedescription.png">
 
+
+The price should be a positive integer between 0 to 500.
+
+<img alt="Service Price Validation" src="docs/readme_images/serviceprice_validation.png">
+
+When the user enters a proper service price then the Service Details worksheet will be updated and success message would be 
+shown in the terminal. And the user will be redirected to main menue again where he/she will get three options to choose.
+
+<img alt="Service Details Updated" src="docs/readme_images/ServiceDetails_updated.png">
+
+
+
+
+
