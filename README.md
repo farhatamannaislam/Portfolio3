@@ -98,4 +98,50 @@ If the user wants to exit from application he/she can select '3' and press enter
 
 There is no known bug in the application.
 
+# Testing
 
+## PEP8 Testing
+
+The python file run.py has been passed through [PEP8](https://pep8ci.herokuapp.com/) . No error is reported.
+
+## Input Testing
+
+All inputs were tested throughly so make sure that proper input is provided.
+
+* Service Description: Service description is tested to ensure that it's not a digit or empty space. It must be between 0 to 50 characters.
+* Service Price: Service price is tested to ensure that it's not empty or negative number. It must be a positive integer between 0 and 500.
+
+# Deployment 
+
+The site is deployed by [Heroku](https://id.heroku.com/login) and live link can be found [here](https://servicedetail-e151ee9cb139.herokuapp.com/)
+
+The following steps were taken:
+1. Create an account and Log in to [Heroku](https://id.heroku.com/login) 
+2. On the main page click the button labelled New in the top right corner and from the drop-down menu select "Create New App".
+3. Enter a meaningful app name which is taken by Heroku. Heroku will show if the name is available or not.
+4. Next select your region.
+5. Click on the Create App button.
+6. Click on the Settings Tab and scroll down to Config Vars.
+7. Click Reveal Config Vars and Input CREDS and the content of your Google Sheet API creds file as another config var and click add.
+8. Enter port into the Key box and 8000 into the Value box and click the Add button.
+9. Next, scroll down to the Buildpack section click Add Buildpack select Python and click Save Changes.
+10. Repeat step 11 to add node.js. Note: The Buildpacks must be in the correct order. If not click and drag them to move into the correct order.
+11. Scroll to the top of the page and choose the Deploy tab.
+12. Select Github as the deployment method.
+13. Confirm you want to connect to GitHub.
+14. Search for the repository name and click the connect button.
+15. Scroll to the bottom of the deploy page and either click Enable Automatic Deploys for automatic deploys or Deploy Branch to deploy manually. Manually deployed branches will need re-deploying each time the repo is updated. I used Deploy Branch to deploy manually. 
+16. Click View to view the deployed site.
+17. The site is now live and operational.
+
+# Credits
+
+## Resources Used
+* [Stack Overflow](https://stackoverflow.com/)
+* [W3Schools](https://www.w3schools.com/)
+* Code Institute's [Love Sandwich Project](https://github.com/farhatamannaislam/love-sandwitches)
+
+# Acknowledgments
+
+* My mentor Antonio Rodriguez for his valueable support and advice.
+* Code Institute Slack community and tutors for their helpful responses and feedback.
